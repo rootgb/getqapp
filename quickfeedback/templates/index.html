@@ -1,0 +1,62 @@
+<html>
+<head>
+<style>
+body {
+   
+}
+
+h1 {
+    font-family: "Levenim MT";
+    text-align: left;
+	 font-size: 20px;
+}
+
+header {
+font-family: "Levenim MT";
+    text-align: right;
+	 font-size: 20px;
+}
+
+
+</style>
+<body>
+
+<div>
+<h1><a href="/"> hello {{ user.username }}! Welcome to Q admin panel</a></h1>
+</div>
+
+{% if user.is_authenticated %}
+<a href = "/createq/"> CreateQ </a>
+{% if code_list %}
+<p>Your Q's </p>
+    <ul>
+    {% for code in code_list %}
+        <li><a href="/">{{ code }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>You have not created any Q yet</p>
+{% endif %}
+{% else %}
+<h1>Login to start creating Q's</h1>
+{% endif %}
+
+
+
+<div id = header>
+{% if user.is_authenticated %}
+            <p><a href="logout/">Log Out</a></p>
+            {% else %}
+            <p><a href="login/">Log in</a></p>
+{% endif %}
+</div>
+
+
+
+
+
+
+</body>
+
+</head>
+</html>
